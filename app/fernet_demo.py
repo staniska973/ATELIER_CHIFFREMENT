@@ -9,9 +9,9 @@ def load_key() -> bytes:
     key = os.environ.get("FERNET_KEY")
     if not key:
         new_key = Fernet.generate_key()
-        print("⚠️  Aucune clé trouvée (FERNET_KEY). Voici une clé générée :")
+        print("FERNET_KEY est absente, donc on génère une clé pour tester.")
         print(new_key.decode())
-        print("\n➡️  Copie de la clé dans l'environnement :")
+        print("\nPour la garder, on peut l'ajouter dans l'environnement :")
         print("export FERNET_KEY='" + new_key.decode() + "'")
         return new_key
     return key.encode()
@@ -20,7 +20,7 @@ def main():
     key = load_key()
     f = Fernet(key)
 
-    message = "Bonjour, ceci est un secret à encoder !"
+    message = "Bonjour, on teste un petit message secret"
     token = f.encrypt(message.encode("utf-8"))
 
     print("\n=== Chiffrement ===")

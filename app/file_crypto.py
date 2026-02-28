@@ -6,8 +6,10 @@ from cryptography.fernet import Fernet
 def get_fernet() -> Fernet:
     key = os.environ.get("FERNET_KEY")
     if not key:
-        raise SystemExit("❌ FERNET_KEY non défini. Ex: export FERNET_KEY='...'\n"
-                         "Tu peux générer une clé via: python -c \"from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())\"")
+        raise SystemExit(
+            "FERNET_KEY non définie. Exemple : export FERNET_KEY='...'\n"
+            "On peut générer une clé avec : python -c \"from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())\""
+        )
     return Fernet(key.encode())
 
 def encrypt_file(input_path: Path, output_path: Path) -> None:
@@ -33,14 +35,14 @@ def main():
     out_path = Path(args.output)
 
     if not in_path.exists():
-        raise SystemExit(f"❌ Fichier introuvable: {in_path}")
+        raise SystemExit(f"Fichier introuvable : {in_path}")
 
     if args.mode == "encrypt":
         encrypt_file(in_path, out_path)
-        print(f"✅ Chiffré: {in_path} -> {out_path}")
+        print(f"Fichier chiffré : {in_path} -> {out_path}")
     else:
         decrypt_file(in_path, out_path)
-        print(f"✅ Déchiffré: {in_path} -> {out_path}")
+        print(f"Fichier déchiffré : {in_path} -> {out_path}")
 
 if __name__ == "__main__":
     main()

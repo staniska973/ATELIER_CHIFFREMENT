@@ -17,14 +17,14 @@ def derive_key(password: str, salt: bytes) -> bytes:
     return key
 
 def main():
-    # Dans un vrai système, le salt doit être stocké (et constant pour le même secret à déchiffrer)
+    # Dans un vrai système, on doit garder le même salt pour pouvoir redéchiffrer.
     salt_b64 = os.environ.get("SALT_B64")
     if not salt_b64:
         salt = os.urandom(16)
         salt_b64 = base64.b64encode(salt).decode()
-        print("⚠️ SALT_B64 absent, salt généré :")
+        print("SALT_B64 est absente, donc on génère une valeur de test :")
         print(salt_b64)
-        print("➡️ Pour réutiliser le même salt : export SALT_B64='" + salt_b64 + "'")
+        print("Pour réutiliser le même salt : export SALT_B64='" + salt_b64 + "'")
     else:
         salt = base64.b64decode(salt_b64)
 

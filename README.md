@@ -1,5 +1,7 @@
 # Atelier – Chiffrement/Déchiffrement (Python `cryptography`) dans GitHub Codespaces
 
+Réalisé par : **STANISLAS-CONSTANTIN**
+
 ## 1) Lancer le projet dans Codespaces
 - Fork / clone ce repo
 - Bouton **Code** → **Create codespace on main**
