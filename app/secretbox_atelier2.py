@@ -6,6 +6,8 @@ from pathlib import Path
 
 from nacl import exceptions, pwhash, secret, utils
 
+# Réalisé par : STANISLAS-CONSTANTIN
+
 
 def charger_salt() -> bytes:
     """

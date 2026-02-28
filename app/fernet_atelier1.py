@@ -4,6 +4,8 @@ from pathlib import Path
 
 from cryptography.fernet import Fernet, InvalidToken
 
+# Réalisé par : STANISLAS-CONSTANTIN
+
 
 def charger_fernet_depuis_secret() -> Fernet:
     """
